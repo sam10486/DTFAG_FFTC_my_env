@@ -1,5 +1,5 @@
 `include "define.v"
-module R16_input_delay (
+module TF_input_delay (
     input rst_n,
     input clk,
     input [`D_width-1:0] data_in0   ,

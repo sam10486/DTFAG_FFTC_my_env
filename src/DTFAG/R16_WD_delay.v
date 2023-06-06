@@ -38,22 +38,22 @@ module R16_WD_delay (
     output [`D_width-1:0] R16_WD_delay_out15  
 );
 
-    reg [`D_width-1:0] R16_WD_pip0  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip1  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip2  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip3  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip4  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip5  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip6  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip7  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip8  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip9  [0:21]    ;     
-    reg [`D_width-1:0] R16_WD_pip10 [0:21]    ;
-    reg [`D_width-1:0] R16_WD_pip11 [0:21]    ;
-    reg [`D_width-1:0] R16_WD_pip12 [0:21]    ;
-    reg [`D_width-1:0] R16_WD_pip13 [0:21]    ;
-    reg [`D_width-1:0] R16_WD_pip14 [0:21]    ;
-    reg [`D_width-1:0] R16_WD_pip15 [0:21]    ;
+    reg [`D_width-1:0] R16_WD_pip0  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip1  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip2  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip3  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip4  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip5  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip6  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip7  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip8  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip9  [0:19]    ;     
+    reg [`D_width-1:0] R16_WD_pip10 [0:19]    ;
+    reg [`D_width-1:0] R16_WD_pip11 [0:19]    ;
+    reg [`D_width-1:0] R16_WD_pip12 [0:19]    ;
+    reg [`D_width-1:0] R16_WD_pip13 [0:19]    ;
+    reg [`D_width-1:0] R16_WD_pip14 [0:19]    ;
+    reg [`D_width-1:0] R16_WD_pip15 [0:19]    ;
 
     always @(*) begin
         R16_WD_pip0 [0] = R16_WD_delay_in0   ;
@@ -77,7 +77,7 @@ module R16_WD_delay (
     always @(posedge clk or negedge rst_n) begin:delay
         integer i;
         if (~rst_n) begin
-            for (i = 0; i<21; i=i+1) begin
+            for (i = 0; i<19; i=i+1) begin
                 R16_WD_pip0 [i+1] <= 64'd0;
                 R16_WD_pip1 [i+1] <= 64'd0;
                 R16_WD_pip2 [i+1] <= 64'd0;
@@ -96,7 +96,7 @@ module R16_WD_delay (
                 R16_WD_pip15[i+1] <= 64'd0;
             end
         end else begin
-            for (i = 0; i<21; i=i+1) begin
+            for (i = 0; i<19; i=i+1) begin
                 R16_WD_pip0 [i+1] <= R16_WD_pip0 [i];
                 R16_WD_pip1 [i+1] <= R16_WD_pip1 [i];
                 R16_WD_pip2 [i+1] <= R16_WD_pip2 [i];
@@ -117,22 +117,22 @@ module R16_WD_delay (
         end
     end
 
-    assign R16_WD_delay_out0  = R16_WD_pip0 [21]    ;
-    assign R16_WD_delay_out1  = R16_WD_pip1 [21]    ;
-    assign R16_WD_delay_out2  = R16_WD_pip2 [21]    ;
-    assign R16_WD_delay_out3  = R16_WD_pip3 [21]    ;
-    assign R16_WD_delay_out4  = R16_WD_pip4 [21]    ;
-    assign R16_WD_delay_out5  = R16_WD_pip5 [21]    ;
-    assign R16_WD_delay_out6  = R16_WD_pip6 [21]    ;
-    assign R16_WD_delay_out7  = R16_WD_pip7 [21]    ;
-    assign R16_WD_delay_out8  = R16_WD_pip8 [21]    ;
-    assign R16_WD_delay_out9  = R16_WD_pip9 [21]    ;
-    assign R16_WD_delay_out10 = R16_WD_pip10[21]    ;
-    assign R16_WD_delay_out11 = R16_WD_pip11[21]    ;
-    assign R16_WD_delay_out12 = R16_WD_pip12[21]    ;
-    assign R16_WD_delay_out13 = R16_WD_pip13[21]    ;
-    assign R16_WD_delay_out14 = R16_WD_pip14[21]    ;
-    assign R16_WD_delay_out15 = R16_WD_pip15[21]    ;
+    assign R16_WD_delay_out0  = R16_WD_pip0 [19]    ;
+    assign R16_WD_delay_out1  = R16_WD_pip1 [19]    ;
+    assign R16_WD_delay_out2  = R16_WD_pip2 [19]    ;
+    assign R16_WD_delay_out3  = R16_WD_pip3 [19]    ;
+    assign R16_WD_delay_out4  = R16_WD_pip4 [19]    ;
+    assign R16_WD_delay_out5  = R16_WD_pip5 [19]    ;
+    assign R16_WD_delay_out6  = R16_WD_pip6 [19]    ;
+    assign R16_WD_delay_out7  = R16_WD_pip7 [19]    ;
+    assign R16_WD_delay_out8  = R16_WD_pip8 [19]    ;
+    assign R16_WD_delay_out9  = R16_WD_pip9 [19]    ;
+    assign R16_WD_delay_out10 = R16_WD_pip10[19]    ;
+    assign R16_WD_delay_out11 = R16_WD_pip11[19]    ;
+    assign R16_WD_delay_out12 = R16_WD_pip12[19]    ;
+    assign R16_WD_delay_out13 = R16_WD_pip13[19]    ;
+    assign R16_WD_delay_out14 = R16_WD_pip14[19]    ;
+    assign R16_WD_delay_out15 = R16_WD_pip15[19]    ;
 
     
 endmodule

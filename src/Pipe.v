@@ -34,8 +34,8 @@ module Pipe(R0_out,
              clk,          
              rst_n         
             );             
- parameter D_WIDTH = 192;        
- parameter D_ZERO  = 192'd0;     
+ parameter D_WIDTH = 64;        
+ parameter D_ZERO  = 64'd0;     
  output [D_WIDTH-1:0] R0_out;    
  output [D_WIDTH-1:0] R1_out;    
  output [D_WIDTH-1:0] R2_out;    

@@ -22,41 +22,41 @@ module test_FFTP ;
 	parameter ADDR_VALUE =2048; //(POINT_NUM/(BF_POINT_NUM*2))  
 
 
-	parameter golden_file 	= "../sim/data_file/golden/test_golden.txt";  
+	parameter golden_file 	= "../sim/data_file/golden_NWC/test_golden.txt";  
  
-	parameter A_B0R0  		= "../sim/data_file/input_pattern/A_b0radix0.txt";  
-	parameter A_B0R1  		= "../sim/data_file/input_pattern/A_b0radix1.txt";  
-	parameter A_B0R2  		= "../sim/data_file/input_pattern/A_b0radix2.txt";  
-	parameter A_B0R3  		= "../sim/data_file/input_pattern/A_b0radix3.txt";  
-	parameter A_B0R4  		= "../sim/data_file/input_pattern/A_b0radix4.txt";  
-	parameter A_B0R5  		= "../sim/data_file/input_pattern/A_b0radix5.txt";  
-	parameter A_B0R6  		= "../sim/data_file/input_pattern/A_b0radix6.txt";  
-	parameter A_B0R7  		= "../sim/data_file/input_pattern/A_b0radix7.txt";  
-	parameter A_B0R8  		= "../sim/data_file/input_pattern/A_b0radix8.txt";  
-	parameter A_B0R9  		= "../sim/data_file/input_pattern/A_b0radix9.txt";  
-	parameter A_B0R10 		= "../sim/data_file/input_pattern/A_b0radix10.txt";  
-	parameter A_B0R11 		= "../sim/data_file/input_pattern/A_b0radix11.txt";  
-	parameter A_B0R12 		= "../sim/data_file/input_pattern/A_b0radix12.txt";  
-	parameter A_B0R13 		= "../sim/data_file/input_pattern/A_b0radix13.txt";  
-	parameter A_B0R14 		= "../sim/data_file/input_pattern/A_b0radix14.txt";  
-	parameter A_B0R15 		= "../sim/data_file/input_pattern/A_b0radix15.txt";   
+	parameter A_B0R0  		= "../sim/data_file/input_pattern_NWC/A_b0radix0.txt";  
+	parameter A_B0R1  		= "../sim/data_file/input_pattern_NWC/A_b0radix1.txt";  
+	parameter A_B0R2  		= "../sim/data_file/input_pattern_NWC/A_b0radix2.txt";  
+	parameter A_B0R3  		= "../sim/data_file/input_pattern_NWC/A_b0radix3.txt";  
+	parameter A_B0R4  		= "../sim/data_file/input_pattern_NWC/A_b0radix4.txt";  
+	parameter A_B0R5  		= "../sim/data_file/input_pattern_NWC/A_b0radix5.txt";  
+	parameter A_B0R6  		= "../sim/data_file/input_pattern_NWC/A_b0radix6.txt";  
+	parameter A_B0R7  		= "../sim/data_file/input_pattern_NWC/A_b0radix7.txt";  
+	parameter A_B0R8  		= "../sim/data_file/input_pattern_NWC/A_b0radix8.txt";  
+	parameter A_B0R9  		= "../sim/data_file/input_pattern_NWC/A_b0radix9.txt";  
+	parameter A_B0R10 		= "../sim/data_file/input_pattern_NWC/A_b0radix10.txt";  
+	parameter A_B0R11 		= "../sim/data_file/input_pattern_NWC/A_b0radix11.txt";  
+	parameter A_B0R12 		= "../sim/data_file/input_pattern_NWC/A_b0radix12.txt";  
+	parameter A_B0R13 		= "../sim/data_file/input_pattern_NWC/A_b0radix13.txt";  
+	parameter A_B0R14 		= "../sim/data_file/input_pattern_NWC/A_b0radix14.txt";  
+	parameter A_B0R15 		= "../sim/data_file/input_pattern_NWC/A_b0radix15.txt";   
 
-	parameter A_B1R0  		= "../sim/data_file/input_pattern/A_b1radix0.txt";  
-	parameter A_B1R1  		= "../sim/data_file/input_pattern/A_b1radix1.txt";  
-	parameter A_B1R2  		= "../sim/data_file/input_pattern/A_b1radix2.txt";  
-	parameter A_B1R3  		= "../sim/data_file/input_pattern/A_b1radix3.txt";  
-	parameter A_B1R4  		= "../sim/data_file/input_pattern/A_b1radix4.txt";  
-	parameter A_B1R5  		= "../sim/data_file/input_pattern/A_b1radix5.txt";  
-	parameter A_B1R6  		= "../sim/data_file/input_pattern/A_b1radix6.txt";  
-	parameter A_B1R7  		= "../sim/data_file/input_pattern/A_b1radix7.txt"; 
-	parameter A_B1R8  		= "../sim/data_file/input_pattern/A_b1radix8.txt";  
-	parameter A_B1R9  		= "../sim/data_file/input_pattern/A_b1radix9.txt";  
-	parameter A_B1R10 		= "../sim/data_file/input_pattern/A_b1radix10.txt";  
-	parameter A_B1R11 		= "../sim/data_file/input_pattern/A_b1radix11.txt";  
-	parameter A_B1R12 		= "../sim/data_file/input_pattern/A_b1radix12.txt";  
-	parameter A_B1R13 		= "../sim/data_file/input_pattern/A_b1radix13.txt";  
-	parameter A_B1R14 		= "../sim/data_file/input_pattern/A_b1radix14.txt";  
-	parameter A_B1R15 		= "../sim/data_file/input_pattern/A_b1radix15.txt";  
+	parameter A_B1R0  		= "../sim/data_file/input_pattern_NWC/A_b1radix0.txt";  
+	parameter A_B1R1  		= "../sim/data_file/input_pattern_NWC/A_b1radix1.txt";  
+	parameter A_B1R2  		= "../sim/data_file/input_pattern_NWC/A_b1radix2.txt";  
+	parameter A_B1R3  		= "../sim/data_file/input_pattern_NWC/A_b1radix3.txt";  
+	parameter A_B1R4  		= "../sim/data_file/input_pattern_NWC/A_b1radix4.txt";  
+	parameter A_B1R5  		= "../sim/data_file/input_pattern_NWC/A_b1radix5.txt";  
+	parameter A_B1R6  		= "../sim/data_file/input_pattern_NWC/A_b1radix6.txt";  
+	parameter A_B1R7  		= "../sim/data_file/input_pattern_NWC/A_b1radix7.txt"; 
+	parameter A_B1R8  		= "../sim/data_file/input_pattern_NWC/A_b1radix8.txt";  
+	parameter A_B1R9  		= "../sim/data_file/input_pattern_NWC/A_b1radix9.txt";  
+	parameter A_B1R10 		= "../sim/data_file/input_pattern_NWC/A_b1radix10.txt";  
+	parameter A_B1R11 		= "../sim/data_file/input_pattern_NWC/A_b1radix11.txt";  
+	parameter A_B1R12 		= "../sim/data_file/input_pattern_NWC/A_b1radix12.txt";  
+	parameter A_B1R13 		= "../sim/data_file/input_pattern_NWC/A_b1radix13.txt";  
+	parameter A_B1R14 		= "../sim/data_file/input_pattern_NWC/A_b1radix14.txt";  
+	parameter A_B1R15 		= "../sim/data_file/input_pattern_NWC/A_b1radix15.txt";  
  
  
 	wire               MulValid_out ;                                                                                            

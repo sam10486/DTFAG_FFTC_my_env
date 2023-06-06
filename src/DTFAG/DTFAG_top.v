@@ -190,23 +190,27 @@ module DTFAG_top (
     wire [`D_width-1:0] R16_TF_Mul_DC14	;
     wire [`D_width-1:0] R16_TF_Mul_DC15	;  
 
-    reg [3:0] RDC_sel_D_in_delay[0:2];
-    reg [1:0] DC_mode_sel_in_delay[0:2];
+    reg [3:0] RDC_sel_D_in_delay[0:4];
+    reg [1:0] DC_mode_sel_in_delay[0:4];
+    reg [1:0] Mul_sel_in_delay[0:4];
     always @(*) begin
         RDC_sel_D_in_delay[0] = RDC_sel_D_in;
         DC_mode_sel_in_delay[0]= DC_mode_sel_in;
+        Mul_sel_in_delay[0] = Mul_sel_in;
     end
     always @(posedge clk or negedge rst_n) begin:delay
         integer i;
         if (~rst_n) begin
-            for (i = 0; i<2; i=i+1) begin
+            for (i = 0; i<4; i=i+1) begin
                 RDC_sel_D_in_delay[i+1]     <= 64'd0;
                 DC_mode_sel_in_delay[i+1]   <= 64'd0;
+                Mul_sel_in_delay[i+1]   <= 64'd0;
             end
         end else begin
-            for (i = 0; i<2; i=i+1) begin
+            for (i = 0; i<4; i=i+1) begin
                 RDC_sel_D_in_delay[i+1]     <= RDC_sel_D_in_delay[i]  ;
                 DC_mode_sel_in_delay[i+1]   <= DC_mode_sel_in_delay[i];
+                Mul_sel_in_delay[i+1]   <= Mul_sel_in_delay[i];
             end
         end
     end
@@ -360,7 +364,7 @@ module DTFAG_top (
         .Process2_out14    (Process2_out14),
         .Process2_out15    (Process2_out15)
     );
-
+    
     DTFAG_Mux3 DTFAG_Mux3(
         // output
         .MulA0_out  (R16_data_Mux3_out0 ), 
@@ -396,46 +400,62 @@ module DTFAG_top (
         .R16_in13   (R16_data_in13),  
         .R16_in14   (R16_data_in14),  
         .R16_in15   (R16_data_in15),  
-        .Mul_sel    (Mul_sel_in   )   
+        .Mul_sel    (Mul_sel_in_delay[4]   )   
     );
-
-    R16_input_delay R16_input_delay(
+    
+    wire [`D_width-1:0] Process2_out0_D     ;
+    wire [`D_width-1:0] Process2_out1_D     ;
+    wire [`D_width-1:0] Process2_out2_D     ;
+    wire [`D_width-1:0] Process2_out3_D     ;
+    wire [`D_width-1:0] Process2_out4_D     ;
+    wire [`D_width-1:0] Process2_out5_D     ;
+    wire [`D_width-1:0] Process2_out6_D     ;
+    wire [`D_width-1:0] Process2_out7_D     ;
+    wire [`D_width-1:0] Process2_out8_D     ;
+    wire [`D_width-1:0] Process2_out9_D     ;
+    wire [`D_width-1:0] Process2_out10_D    ;
+    wire [`D_width-1:0] Process2_out11_D    ;
+    wire [`D_width-1:0] Process2_out12_D    ;
+    wire [`D_width-1:0] Process2_out13_D    ;
+    wire [`D_width-1:0] Process2_out14_D    ;
+    wire [`D_width-1:0] Process2_out15_D    ;
+    TF_input_delay TF_input_delay(
 		// input
 		.rst_n		(rst_n),
 		.clk		(clk),
-		.data_in0   (R16_data_Mux3_out0 ),
-		.data_in1   (R16_data_Mux3_out1 ),
-		.data_in2   (R16_data_Mux3_out2 ),
-		.data_in3   (R16_data_Mux3_out3 ),
-		.data_in4   (R16_data_Mux3_out4 ),
-		.data_in5   (R16_data_Mux3_out5 ),
-		.data_in6   (R16_data_Mux3_out6 ),
-		.data_in7   (R16_data_Mux3_out7 ),
-		.data_in8   (R16_data_Mux3_out8 ),
-		.data_in9   (R16_data_Mux3_out9 ),
-		.data_in10  (R16_data_Mux3_out10),
-		.data_in11  (R16_data_Mux3_out11),
-		.data_in12  (R16_data_Mux3_out12),
-		.data_in13  (R16_data_Mux3_out13),
-		.data_in14  (R16_data_Mux3_out14),
-		.data_in15  (R16_data_Mux3_out15),
+		.data_in0   (Process2_out0 ),
+		.data_in1   (Process2_out1 ),
+		.data_in2   (Process2_out2 ),
+		.data_in3   (Process2_out3 ),
+		.data_in4   (Process2_out4 ),
+		.data_in5   (Process2_out5 ),
+		.data_in6   (Process2_out6 ),
+		.data_in7   (Process2_out7 ),
+		.data_in8   (Process2_out8 ),
+		.data_in9   (Process2_out9 ),
+		.data_in10  (Process2_out10),
+		.data_in11  (Process2_out11),
+		.data_in12  (Process2_out12),
+		.data_in13  (Process2_out13),
+		.data_in14  (Process2_out14),
+		.data_in15  (Process2_out15),
 		// output
-		.R16_out_delay_data0   (R16_out_delay_data0 ),
-		.R16_out_delay_data1   (R16_out_delay_data1 ),
-		.R16_out_delay_data2   (R16_out_delay_data2 ),
-		.R16_out_delay_data3   (R16_out_delay_data3 ),
-		.R16_out_delay_data4   (R16_out_delay_data4 ),
-		.R16_out_delay_data5   (R16_out_delay_data5 ),
-		.R16_out_delay_data6   (R16_out_delay_data6 ),
-		.R16_out_delay_data7   (R16_out_delay_data7 ),
-		.R16_out_delay_data8   (R16_out_delay_data8 ),
-		.R16_out_delay_data9   (R16_out_delay_data9 ),
-		.R16_out_delay_data10  (R16_out_delay_data10),
-		.R16_out_delay_data11  (R16_out_delay_data11),
-		.R16_out_delay_data12  (R16_out_delay_data12),
-		.R16_out_delay_data13  (R16_out_delay_data13),
-		.R16_out_delay_data14  (R16_out_delay_data14),
-		.R16_out_delay_data15  (R16_out_delay_data15)
+		.R16_out_delay_data0   (Process2_out0_D ),
+		.R16_out_delay_data1   (Process2_out1_D ),
+		.R16_out_delay_data2   (Process2_out2_D ),
+		.R16_out_delay_data3   (Process2_out3_D ),
+		.R16_out_delay_data4   (Process2_out4_D ),
+		.R16_out_delay_data5   (Process2_out5_D ),
+		.R16_out_delay_data6   (Process2_out6_D ),
+		.R16_out_delay_data7   (Process2_out7_D ),
+		.R16_out_delay_data8   (Process2_out8_D ),
+		.R16_out_delay_data9   (Process2_out9_D ),
+		.R16_out_delay_data10  (Process2_out10_D),
+		.R16_out_delay_data11  (Process2_out11_D),
+		.R16_out_delay_data12  (Process2_out12_D),
+		.R16_out_delay_data13  (Process2_out13_D),
+		.R16_out_delay_data14  (Process2_out14_D),
+		.R16_out_delay_data15  (Process2_out15_D)
 	);
 
     R16_TF_mul R16_TF_mul(
@@ -443,38 +463,38 @@ module DTFAG_top (
         .clk             (clk),
         .rst_n           (rst_n),
         .N_in            (N_in),
-        .R16_delay_in0   (R16_out_delay_data0 ),
-        .R16_delay_in1   (R16_out_delay_data1 ),
-        .R16_delay_in2   (R16_out_delay_data2 ),
-        .R16_delay_in3   (R16_out_delay_data3 ),
-        .R16_delay_in4   (R16_out_delay_data4 ),
-        .R16_delay_in5   (R16_out_delay_data5 ),
-        .R16_delay_in6   (R16_out_delay_data6 ),
-        .R16_delay_in7   (R16_out_delay_data7 ),
-        .R16_delay_in8   (R16_out_delay_data8 ),
-        .R16_delay_in9   (R16_out_delay_data9 ),
-        .R16_delay_in10  (R16_out_delay_data10),
-        .R16_delay_in11  (R16_out_delay_data11),
-        .R16_delay_in12  (R16_out_delay_data12),
-        .R16_delay_in13  (R16_out_delay_data13),
-        .R16_delay_in14  (R16_out_delay_data14),
-        .R16_delay_in15  (R16_out_delay_data15),
-        .TF_in0          (Process2_out0 ),
-        .TF_in1          (Process2_out1 ),
-        .TF_in2          (Process2_out2 ),
-        .TF_in3          (Process2_out3 ),
-        .TF_in4          (Process2_out4 ),
-        .TF_in5          (Process2_out5 ),
-        .TF_in6          (Process2_out6 ),
-        .TF_in7          (Process2_out7 ),
-        .TF_in8          (Process2_out8 ),
-        .TF_in9          (Process2_out9 ),
-        .TF_in10         (Process2_out10),
-        .TF_in11         (Process2_out11),
-        .TF_in12         (Process2_out12),
-        .TF_in13         (Process2_out13),
-        .TF_in14         (Process2_out14),
-        .TF_in15         (Process2_out15),
+        .R16_delay_in0   (R16_data_Mux3_out0 ),
+        .R16_delay_in1   (R16_data_Mux3_out1 ),
+        .R16_delay_in2   (R16_data_Mux3_out2 ),
+        .R16_delay_in3   (R16_data_Mux3_out3 ),
+        .R16_delay_in4   (R16_data_Mux3_out4 ),
+        .R16_delay_in5   (R16_data_Mux3_out5 ),
+        .R16_delay_in6   (R16_data_Mux3_out6 ),
+        .R16_delay_in7   (R16_data_Mux3_out7 ),
+        .R16_delay_in8   (R16_data_Mux3_out8 ),
+        .R16_delay_in9   (R16_data_Mux3_out9 ),
+        .R16_delay_in10  (R16_data_Mux3_out10),
+        .R16_delay_in11  (R16_data_Mux3_out11),
+        .R16_delay_in12  (R16_data_Mux3_out12),
+        .R16_delay_in13  (R16_data_Mux3_out13),
+        .R16_delay_in14  (R16_data_Mux3_out14),
+        .R16_delay_in15  (R16_data_Mux3_out15),
+        .TF_in0          (Process2_out0_D ),
+        .TF_in1          (Process2_out1_D ),
+        .TF_in2          (Process2_out2_D ),
+        .TF_in3          (Process2_out3_D ),
+        .TF_in4          (Process2_out4_D ),
+        .TF_in5          (Process2_out5_D ),
+        .TF_in6          (Process2_out6_D ),
+        .TF_in7          (Process2_out7_D ),
+        .TF_in8          (Process2_out8_D ),
+        .TF_in9          (Process2_out9_D ),
+        .TF_in10         (Process2_out10_D),
+        .TF_in11         (Process2_out11_D),
+        .TF_in12         (Process2_out12_D),
+        .TF_in13         (Process2_out13_D),
+        .TF_in14         (Process2_out14_D),
+        .TF_in15         (Process2_out15_D),
         // output
         .R16_TF_Mul_out0     (R16_TF_Mul_out0 ),
         .R16_TF_Mul_out1     (R16_TF_Mul_out1 ),
@@ -527,8 +547,8 @@ module DTFAG_top (
  			        .RDC_in13	(R16_TF_Mul_out13),                             
  			        .RDC_in14	(R16_TF_Mul_out14),                             
  			        .RDC_in15	(R16_TF_Mul_out15),                             
- 			        .RDC_sel(RDC_sel_D_in_delay[2]),                                 
- 				    .DC_mode_sel(DC_mode_sel_in_delay[2]),                   
+ 			        .RDC_sel(RDC_sel_D_in_delay[4]),                                 
+ 				    .DC_mode_sel(DC_mode_sel_in_delay[4]),                   
                     .rst_n(rst_n),                                         
                     .clk(clk)                                              
                      ) ;
