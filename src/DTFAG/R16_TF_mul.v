@@ -55,24 +55,16 @@ module R16_TF_mul (
     output [`D_width-1:0] R16_TF_Mul_out15    
     
 );
-    reg [`D_width-1:0] R16_TF_Mul_out0_delay[0:3];
-    always @(*) begin
-        R16_TF_Mul_out0_delay[0] =  R16_delay_in0;
-    end
-    always @(posedge clk or negedge rst_n) begin:delay
-        integer i;
-        if (~rst_n) begin
-            for (i = 0; i<3 ; i=i+1) begin
-                R16_TF_Mul_out0_delay[i+1] <= 64'd0;
-            end
-        end else begin
-            for (i = 0; i<3 ; i=i+1) begin
-                R16_TF_Mul_out0_delay[i+1] <= R16_TF_Mul_out0_delay[i];
-            end
-        end
-    end
-    assign R16_TF_Mul_out0 = R16_TF_Mul_out0_delay[3];
 
+    MulMod128 R16_TF_Mul_0(
+        .S_out(R16_TF_Mul_out0), 
+        .A_in(R16_delay_in0),       
+        .B_in(TF_in0),        
+        .N_in(N_in),         
+        .rst_n(rst_n),            
+        .clk(clk)                
+    );
+    
     MulMod128 R16_TF_Mul_1(
         .S_out(R16_TF_Mul_out1), 
         .A_in(R16_delay_in1),       

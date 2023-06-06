@@ -235,6 +235,7 @@ module DTFAG_top (
         .clk        (clk),
         .rst_n      (rst_n),
         .ROM_CEN    (ROM_CEN_AGU),
+        .FFT_stage_in(FFT_stage_in),
         .MA0        (MA0        ),
         .MA1        (MA1        ),
         .MA2        (MA2        ),

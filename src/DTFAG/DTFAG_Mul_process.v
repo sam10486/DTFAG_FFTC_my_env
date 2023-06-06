@@ -73,6 +73,7 @@ module DTFAG_Mul_process (
     output reg [`D_width-1:0] Process2_out15    
 
 );  
+    reg [`D_width-1:0] Proc1_ROM0_in0      ;
     reg [`D_width-1:0] Proc1_ROM0_in1      ;
     reg [`D_width-1:0] Proc1_ROM0_in2      ;
     reg [`D_width-1:0] Proc1_ROM0_in3      ;
@@ -89,6 +90,7 @@ module DTFAG_Mul_process (
     reg [`D_width-1:0] Proc1_ROM0_in14     ;
     reg [`D_width-1:0] Proc1_ROM0_in15     ;
     
+    reg [`D_width-1:0] Proc1_ROM1_in0      ;
     reg [`D_width-1:0] Proc1_ROM1_in1      ;
     reg [`D_width-1:0] Proc1_ROM1_in2      ;
     reg [`D_width-1:0] Proc1_ROM1_in3      ;
@@ -105,6 +107,7 @@ module DTFAG_Mul_process (
     reg [`D_width-1:0] Proc1_ROM1_in14     ;
     reg [`D_width-1:0] Proc1_ROM1_in15     ;
 
+    wire [`D_width-1:0] Process1_out0_tmp   ;
     wire [`D_width-1:0] Process1_out1_tmp   ;
     wire [`D_width-1:0] Process1_out2_tmp   ;
     wire [`D_width-1:0] Process1_out3_tmp   ;
@@ -121,6 +124,7 @@ module DTFAG_Mul_process (
     wire [`D_width-1:0] Process1_out14_tmp  ;
     wire [`D_width-1:0] Process1_out15_tmp  ;
 
+    reg [`D_width-1:0] Process1_out0   ;
     reg [`D_width-1:0] Process1_out1   ;
     reg [`D_width-1:0] Process1_out2   ;
     reg [`D_width-1:0] Process1_out3   ;
@@ -154,8 +158,7 @@ module DTFAG_Mul_process (
     reg [`D_width-1:0] ROM2_in14_pip  [0:4];
     reg [`D_width-1:0] ROM2_in15_pip  [0:4];
 
-    reg [`D_width-1:0] ROM2_in0_pip1   [0:3];
-
+    wire [`D_width-1:0] Process2_out0_tmp   ;
     wire [`D_width-1:0] Process2_out1_tmp   ;
     wire [`D_width-1:0] Process2_out2_tmp   ;
     wire [`D_width-1:0] Process2_out3_tmp   ;
@@ -261,47 +264,28 @@ module DTFAG_Mul_process (
     end
 
     always @(*) begin
-        case (FFT_stage_in)
-            2'd3: begin
-                Proc1_ROM0_in1  = 64'd1 ;
-                Proc1_ROM0_in2  = 64'd1 ;
-                Proc1_ROM0_in3  = 64'd1 ;
-                Proc1_ROM0_in4  = 64'd1 ;
-                Proc1_ROM0_in5  = 64'd1 ;
-                Proc1_ROM0_in6  = 64'd1 ;
-                Proc1_ROM0_in7  = 64'd1 ;
-                Proc1_ROM0_in8  = 64'd1 ;
-                Proc1_ROM0_in9  = 64'd1 ;
-                Proc1_ROM0_in10 = 64'd1 ;
-                Proc1_ROM0_in11 = 64'd1 ;
-                Proc1_ROM0_in12 = 64'd1 ;
-                Proc1_ROM0_in13 = 64'd1 ;
-                Proc1_ROM0_in14 = 64'd1 ;
-                Proc1_ROM0_in15 = 64'd1 ;
-            end 
-            default: begin
-                Proc1_ROM0_in1  = ROM0_in1  ;
-                Proc1_ROM0_in2  = ROM0_in2  ;
-                Proc1_ROM0_in3  = ROM0_in3  ;
-                Proc1_ROM0_in4  = ROM0_in4  ;
-                Proc1_ROM0_in5  = ROM0_in5  ;
-                Proc1_ROM0_in6  = ROM0_in6  ;
-                Proc1_ROM0_in7  = ROM0_in7  ;
-                Proc1_ROM0_in8  = ROM0_in8  ;
-                Proc1_ROM0_in9  = ROM0_in9  ;
-                Proc1_ROM0_in10 = ROM0_in10 ;
-                Proc1_ROM0_in11 = ROM0_in11 ;
-                Proc1_ROM0_in12 = ROM0_in12 ;
-                Proc1_ROM0_in13 = ROM0_in13 ;
-                Proc1_ROM0_in14 = ROM0_in14 ;
-                Proc1_ROM0_in15 = ROM0_in15 ;
-            end
-        endcase
+        Proc1_ROM0_in0  = ROM0_in0  ;
+        Proc1_ROM0_in1  = ROM0_in1  ;
+        Proc1_ROM0_in2  = ROM0_in2  ;
+        Proc1_ROM0_in3  = ROM0_in3  ;
+        Proc1_ROM0_in4  = ROM0_in4  ;
+        Proc1_ROM0_in5  = ROM0_in5  ;
+        Proc1_ROM0_in6  = ROM0_in6  ;
+        Proc1_ROM0_in7  = ROM0_in7  ;
+        Proc1_ROM0_in8  = ROM0_in8  ;
+        Proc1_ROM0_in9  = ROM0_in9  ;
+        Proc1_ROM0_in10 = ROM0_in10 ;
+        Proc1_ROM0_in11 = ROM0_in11 ;
+        Proc1_ROM0_in12 = ROM0_in12 ;
+        Proc1_ROM0_in13 = ROM0_in13 ;
+        Proc1_ROM0_in14 = ROM0_in14 ;
+        Proc1_ROM0_in15 = ROM0_in15 ;
     end
 
     always @(*) begin
         case (FFT_stage_in)
             2'd0: begin
+                Proc1_ROM1_in0  = ROM1_in0  ;
                 Proc1_ROM1_in1  = ROM1_in1  ;
                 Proc1_ROM1_in2  = ROM1_in2  ;
                 Proc1_ROM1_in3  = ROM1_in3  ;
@@ -319,6 +303,7 @@ module DTFAG_Mul_process (
                 Proc1_ROM1_in15 = ROM1_in15 ;
             end
             2'd1: begin
+                Proc1_ROM1_in0  = ROM1_in0  ;
                 Proc1_ROM1_in1  = ROM1_in1  ;
                 Proc1_ROM1_in2  = ROM1_in2  ;
                 Proc1_ROM1_in3  = ROM1_in3  ;
@@ -336,6 +321,7 @@ module DTFAG_Mul_process (
                 Proc1_ROM1_in15 = ROM1_in15 ;
             end
             default: begin
+                Proc1_ROM1_in0  = 64'd1 ;
                 Proc1_ROM1_in1  = 64'd1 ;
                 Proc1_ROM1_in2  = 64'd1 ;
                 Proc1_ROM1_in3  = 64'd1 ;
@@ -356,6 +342,15 @@ module DTFAG_Mul_process (
     end
     
     // Process 1 (v0 x v1)
+    MulMod128 proc1_u0_Mul(
+        .S_out(Process1_out0_tmp), 
+        .A_in(Proc1_ROM0_in0),       
+        .B_in(Proc1_ROM1_in0),        
+        .N_in(N_in),         
+        .rst_n(rst_n),            
+        .clk(clk)                
+    );
+
     MulMod128 proc1_u1_Mul(
         .S_out(Process1_out1_tmp), 
         .A_in(Proc1_ROM0_in1),       
@@ -479,6 +474,7 @@ module DTFAG_Mul_process (
 
     always @( posedge clk or negedge rst_n ) begin
         if (~rst_n) begin
+            Process1_out0   <= 64'd0    ;
             Process1_out1   <= 64'd0    ;
             Process1_out2   <= 64'd0    ;
             Process1_out3   <= 64'd0    ;
@@ -495,6 +491,7 @@ module DTFAG_Mul_process (
             Process1_out14  <= 64'd0    ;
             Process1_out15  <= 64'd0    ;
         end else begin
+            Process1_out0   <= Process1_out0_tmp     ;
             Process1_out1   <= Process1_out1_tmp     ;
             Process1_out2   <= Process1_out2_tmp     ;
             Process1_out3   <= Process1_out3_tmp     ;
@@ -514,6 +511,15 @@ module DTFAG_Mul_process (
     end
 
     // Process 2 (v0 x v1) x v2
+    MulMod128 proc2_u0_Mul(
+        .S_out(Process2_out0_tmp), 
+        .A_in(Process1_out0),       
+        .B_in(ROM2_in0_pip[4]),        
+        .N_in(N_in),         
+        .rst_n(rst_n),            
+        .clk(clk)                
+    );
+
     MulMod128 proc2_u1_Mul(
         .S_out(Process2_out1_tmp), 
         .A_in(Process1_out1),       
@@ -635,21 +641,6 @@ module DTFAG_Mul_process (
         .clk(clk)                
     );
 
-    always @(*) begin
-        ROM2_in0_pip1[0] = ROM2_in0_pip[4];
-    end
-    always @(posedge clk or negedge rst_n) begin: ROM2_data0_pip1
-        integer i;
-        if (!rst_n) begin
-            for (i = 0; i<3 ; i=i+1) begin
-                ROM2_in0_pip1[i+1] <= 64'd0;
-            end
-        end else begin
-            for (i = 0; i<3 ; i=i+1) begin
-                ROM2_in0_pip1[i+1] <= ROM2_in0_pip1[i];
-            end
-        end
-    end
 
     always @( posedge clk or negedge rst_n ) begin
         if (~rst_n) begin
@@ -670,7 +661,7 @@ module DTFAG_Mul_process (
             Process2_out14  <= 64'd0    ;
             Process2_out15  <= 64'd0    ;
         end else begin
-            Process2_out0   <= ROM2_in0_pip1[3]      ;
+            Process2_out0   <= Process2_out0_tmp     ;
             Process2_out1   <= Process2_out1_tmp     ;
             Process2_out2   <= Process2_out2_tmp     ;
             Process2_out3   <= Process2_out3_tmp     ;

@@ -3,6 +3,7 @@ module Memory_wrapper (
     input clk,
     input rst_n,
     input ROM_CEN,
+    input [1:0] FFT_stage_in,
     input [`ROMA_width-1:0] MA0,
     input [`ROMA_width-1:0] MA1,
     input [`ROMA_width-1:0] MA2,
@@ -68,6 +69,7 @@ module Memory_wrapper (
         .MA1       (MA1     ),
         .MA2       (MA2     ),
         .ROM_CEN   (ROM_CEN ),
+        .FFT_stage_in(FFT_stage_in),
         // output
         // ROM0
         .ROM0_b0   (ROM0_b0 ),

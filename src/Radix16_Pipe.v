@@ -349,74 +349,74 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
 
  always@(posedge clk)begin       
    if(~rst_n)begin               
-     R0_0  		<= P_ZERO;          
-     R1_0  		<= P_ZERO;          
-     R2_0  		<= P_ZERO;          
-     R3_0  		<= P_ZERO;          
-     R4_0  		<= P_ZERO;          
-     R5_0  		<= P_ZERO;          
-     R6_0  		<= P_ZERO;          
-     R7_0  		<= P_ZERO;          
-     R8_0  		<= P_ZERO;
-     R0_0_D_tmp  	<= P_ZERO;          
-     R1_0_D_tmp  	<= P_ZERO;          
-     R2_0_D_tmp  	<= P_ZERO;          
-     R3_0_D_tmp  	<= P_ZERO;          
-     R4_0_D_tmp  	<= P_ZERO;          
-     R5_0_D_tmp  	<= P_ZERO;          
-     R6_0_D_tmp  	<= P_ZERO;          
-     R7_0_D_tmp  	<= P_ZERO;          
-     R8_0_D_tmp  	<= P_ZERO; 
+    R0_0  		<= P_ZERO;          
+    R1_0  		<= P_ZERO;          
+    R2_0  		<= P_ZERO;          
+    R3_0  		<= P_ZERO;          
+    R4_0  		<= P_ZERO;          
+    R5_0  		<= P_ZERO;          
+    R6_0  		<= P_ZERO;          
+    R7_0  		<= P_ZERO;          
+    R8_0  		<= P_ZERO;
+    R0_0_D_tmp  	<= P_ZERO;          
+    R1_0_D_tmp  	<= P_ZERO;          
+    R2_0_D_tmp  	<= P_ZERO;          
+    R3_0_D_tmp  	<= P_ZERO;          
+    R4_0_D_tmp  	<= P_ZERO;          
+    R5_0_D_tmp  	<= P_ZERO;          
+    R6_0_D_tmp  	<= P_ZERO;          
+    R7_0_D_tmp  	<= P_ZERO;          
+    R8_0_D_tmp  	<= P_ZERO; 
 
 
-     R0_0_D  	<= P_ZERO;          
-     R1_0_D  	<= P_ZERO;          
-     R2_0_D  	<= P_ZERO;          
-     R3_0_D  	<= P_ZERO;          
-     R4_0_D  	<= P_ZERO;          
-     R5_0_D  	<= P_ZERO;          
-     R6_0_D  	<= P_ZERO;          
-     R7_0_D  	<= P_ZERO;          
-     R8_0_D  	<= P_ZERO;        
+    R0_0_D  	<= P_ZERO;          
+    R1_0_D  	<= P_ZERO;          
+    R2_0_D  	<= P_ZERO;          
+    R3_0_D  	<= P_ZERO;          
+    R4_0_D  	<= P_ZERO;          
+    R5_0_D  	<= P_ZERO;          
+    R6_0_D  	<= P_ZERO;          
+    R7_0_D  	<= P_ZERO;          
+    R8_0_D  	<= P_ZERO;        
    end                           
    else begin                    
-     R0_0  		<= BU_S0_0_R0_out_wire;           
-     R1_0  		<= BU_S0_1_R0_out_wire;           
-     R2_0  		<= BU_S0_2_R0_out_wire;           
-     R3_0  		<= BU_S0_3_R0_out_wire;           
-     R4_0  		<= BU_S0_4_R0_out_wire;           
-     R5_0  		<= BU_S0_5_R0_out_wire;           
-     R6_0  		<= BU_S0_6_R0_out_wire;           
-     R7_0  		<= BU_S0_7_R0_out_wire;           
-     R8_0  		<= BU_S0_0_R1_out_wire;   
+    R0_0  		<= BU_S0_0_R0_out_wire;           
+    R1_0  		<= BU_S0_1_R0_out_wire;           
+    R2_0  		<= BU_S0_2_R0_out_wire;           
+    R3_0  		<= BU_S0_3_R0_out_wire;           
+    R4_0  		<= BU_S0_4_R0_out_wire;           
+    R5_0  		<= BU_S0_5_R0_out_wire;           
+    R6_0  		<= BU_S0_6_R0_out_wire;           
+    R7_0  		<= BU_S0_7_R0_out_wire;           
+    R8_0  		<= BU_S0_0_R1_out_wire;   
 
-     R0_0_D_tmp  	<= R0_0;          
-     R1_0_D_tmp  	<= R1_0;          
-     R2_0_D_tmp  	<= R2_0;          
-     R3_0_D_tmp  	<= R3_0;          
-     R4_0_D_tmp  	<= R4_0;          
-     R5_0_D_tmp  	<= R5_0;          
-     R6_0_D_tmp  	<= R6_0;          
-     R7_0_D_tmp  	<= R7_0;          
-     R8_0_D_tmp  	<= R8_0;  
+    R0_0_D_tmp  	<= R0_0;          
+    R1_0_D_tmp  	<= R1_0;          
+    R2_0_D_tmp  	<= R2_0;          
+    R3_0_D_tmp  	<= R3_0;          
+    R4_0_D_tmp  	<= R4_0;          
+    R5_0_D_tmp  	<= R5_0;          
+    R6_0_D_tmp  	<= R6_0;          
+    R7_0_D_tmp  	<= R7_0;          
+    R8_0_D_tmp  	<= R8_0;  
 
 
-     R0_0_D  	<= R0_0_D_tmp;          
-     R1_0_D  	<= R1_0_D_tmp;          
-     R2_0_D  	<= R2_0_D_tmp;          
-     R3_0_D  	<= R3_0_D_tmp;          
-     R4_0_D  	<= R4_0_D_tmp;          
-     R5_0_D  	<= R5_0_D_tmp;          
-     R6_0_D  	<= R6_0_D_tmp;          
-     R7_0_D  	<= R7_0_D_tmp;          
-     R8_0_D  	<= R8_0_D_tmp;   
+    R0_0_D  	<= R0_0_D_tmp;          
+    R1_0_D  	<= R1_0_D_tmp;          
+    R2_0_D  	<= R2_0_D_tmp;          
+    R3_0_D  	<= R3_0_D_tmp;          
+    R4_0_D  	<= R4_0_D_tmp;          
+    R5_0_D  	<= R5_0_D_tmp;          
+    R6_0_D  	<= R6_0_D_tmp;          
+    R7_0_D  	<= R7_0_D_tmp;          
+    R8_0_D  	<= R8_0_D_tmp;   
    end                           
  end 
  
  MulMod128 MulMod0(   
                 .S_out  (R9_0_D              ), 
                 .A_in   (BU_S0_1_R1_out_wire ),       
-                .B_in   (`W_1_16              ),        
+                .B_in   (`IW_1_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -425,7 +425,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod1(             
                 .S_out  (R10_0_D             ), 
                 .A_in   (BU_S0_2_R1_out_wire ),       
-                .B_in   (`W_2_16              ),        
+                .B_in   (`IW_2_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -434,7 +434,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod2(    
                 .S_out  (R11_0_D             ), 
                 .A_in   (BU_S0_3_R1_out_wire ),       
-                .B_in   (`W_3_16              ),        
+                .B_in   (`IW_3_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -443,7 +443,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod3(
                 .S_out  (R12_0_D             ), 
                 .A_in   (BU_S0_4_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -452,7 +452,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod4(          
                 .S_out  (R13_0_D             ), 
                 .A_in   (BU_S0_5_R1_out_wire ),       
-                .B_in   (`W_5_16              ),        
+                .B_in   (`IW_5_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -461,7 +461,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod5(           
                 .S_out  (R14_0_D             ), 
                 .A_in   (BU_S0_6_R1_out_wire ),       
-                .B_in   (`W_6_16              ),        
+                .B_in   (`IW_6_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -470,7 +470,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod6(     
                 .S_out  (R15_0_D             ), 
                 .A_in   (BU_S0_7_R1_out_wire ),       
-                .B_in   (`W_7_16              ),        
+                .B_in   (`IW_7_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -535,79 +535,79 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
 																		 
  always@(posedge clk)begin       
    if(~rst_n)begin               
-     R0_1  		<= P_ZERO;          
-     R1_1  		<= P_ZERO;          
-     R2_1  		<= P_ZERO;          
-     R3_1  		<= P_ZERO;          
-     R4_1  		<= P_ZERO;          
-     R8_1   	<= P_ZERO;          
-     R9_1   	<= P_ZERO;          
-     R10_1  	<= P_ZERO;          
-     R11_1  	<= P_ZERO;  
-	 R12_1  	<= P_ZERO; 
+    R0_1  		<= P_ZERO;          
+    R1_1  		<= P_ZERO;          
+    R2_1  		<= P_ZERO;          
+    R3_1  		<= P_ZERO;          
+    R4_1  		<= P_ZERO;          
+    R8_1   	<= P_ZERO;          
+    R9_1   	<= P_ZERO;          
+    R10_1  	<= P_ZERO;          
+    R11_1  	<= P_ZERO;  
+	  R12_1  	<= P_ZERO; 
 
-     R0_1_D_tmp   	<= P_ZERO;          
-     R1_1_D_tmp   	<= P_ZERO;          
-     R2_1_D_tmp   	<= P_ZERO;          
-     R3_1_D_tmp   	<= P_ZERO;          
-     R4_1_D_tmp   	<= P_ZERO;          
-     R8_1_D_tmp   	<= P_ZERO;          
-     R9_1_D_tmp   	<= P_ZERO;          
-     R10_1_D_tmp  	<= P_ZERO;          
-     R11_1_D_tmp  	<= P_ZERO;      
-	 R12_1_D_tmp  	<= P_ZERO;	
+    R0_1_D_tmp   	<= P_ZERO;          
+    R1_1_D_tmp   	<= P_ZERO;          
+    R2_1_D_tmp   	<= P_ZERO;          
+    R3_1_D_tmp   	<= P_ZERO;          
+    R4_1_D_tmp   	<= P_ZERO;          
+    R8_1_D_tmp   	<= P_ZERO;          
+    R9_1_D_tmp   	<= P_ZERO;          
+    R10_1_D_tmp  	<= P_ZERO;          
+    R11_1_D_tmp  	<= P_ZERO;      
+	  R12_1_D_tmp  	<= P_ZERO;	
 
-     R0_1_D   	<= P_ZERO;          
-     R1_1_D   	<= P_ZERO;          
-     R2_1_D   	<= P_ZERO;          
-     R3_1_D   	<= P_ZERO;          
-     R4_1_D   	<= P_ZERO;          
-     R8_1_D   	<= P_ZERO;          
-     R9_1_D   	<= P_ZERO;          
-     R10_1_D  	<= P_ZERO;          
-     R11_1_D  	<= P_ZERO;      
-	 R12_1_D  	<= P_ZERO;	 
+    R0_1_D   	<= P_ZERO;          
+    R1_1_D   	<= P_ZERO;          
+    R2_1_D   	<= P_ZERO;          
+    R3_1_D   	<= P_ZERO;          
+    R4_1_D   	<= P_ZERO;          
+    R8_1_D   	<= P_ZERO;          
+    R9_1_D   	<= P_ZERO;          
+    R10_1_D  	<= P_ZERO;          
+    R11_1_D  	<= P_ZERO;      
+	  R12_1_D  	<= P_ZERO;	 
    end                           
    else begin                    
-     R0_1   	<= BU_S1_0_R0_out_wire;           
-     R1_1   	<= BU_S1_1_R0_out_wire;           
-     R2_1   	<= BU_S1_2_R0_out_wire;           
-     R3_1   	<= BU_S1_3_R0_out_wire;           
-     R4_1   	<= BU_S1_0_R1_out_wire;           
-     R8_1   	<= BU_S1_4_R0_out_wire;           
-     R9_1   	<= BU_S1_5_R0_out_wire;           
-     R10_1  	<= BU_S1_6_R0_out_wire;           
-     R11_1  	<= BU_S1_7_R0_out_wire; 
-	 R12_1  	<= BU_S1_4_R1_out_wire;
+    R0_1   	<= BU_S1_0_R0_out_wire;           
+    R1_1   	<= BU_S1_1_R0_out_wire;           
+    R2_1   	<= BU_S1_2_R0_out_wire;           
+    R3_1   	<= BU_S1_3_R0_out_wire;           
+    R4_1   	<= BU_S1_0_R1_out_wire;           
+    R8_1   	<= BU_S1_4_R0_out_wire;           
+    R9_1   	<= BU_S1_5_R0_out_wire;           
+    R10_1  	<= BU_S1_6_R0_out_wire;           
+    R11_1  	<= BU_S1_7_R0_out_wire; 
+	  R12_1  	<= BU_S1_4_R1_out_wire;
 
-     R0_1_D_tmp    	<= R0_1 ;          
-     R1_1_D_tmp    	<= R1_1 ;          
-     R2_1_D_tmp    	<= R2_1 ;          
-     R3_1_D_tmp    	<= R3_1 ;          
-     R4_1_D_tmp    	<= R4_1 ;          
-     R8_1_D_tmp    	<= R8_1 ;          
-     R9_1_D_tmp    	<= R9_1 ;          
-     R10_1_D_tmp   	<= R10_1;          
-     R11_1_D_tmp   	<= R11_1;  
-	 R12_1_D_tmp   	<= R12_1;
+    R0_1_D_tmp    	<= R0_1 ;          
+    R1_1_D_tmp    	<= R1_1 ;          
+    R2_1_D_tmp    	<= R2_1 ;          
+    R3_1_D_tmp    	<= R3_1 ;          
+    R4_1_D_tmp    	<= R4_1 ;          
+    R8_1_D_tmp    	<= R8_1 ;          
+    R9_1_D_tmp    	<= R9_1 ;          
+    R10_1_D_tmp   	<= R10_1;          
+    R11_1_D_tmp   	<= R11_1;  
+	  R12_1_D_tmp   	<= R12_1;
 
-     R0_1_D    	<= R0_1_D_tmp ;          
-     R1_1_D    	<= R1_1_D_tmp ;          
-     R2_1_D    	<= R2_1_D_tmp ;          
-     R3_1_D    	<= R3_1_D_tmp ;          
-     R4_1_D    	<= R4_1_D_tmp ;          
-     R8_1_D    	<= R8_1_D_tmp ;          
-     R9_1_D    	<= R9_1_D_tmp ;          
-     R10_1_D   	<= R10_1_D_tmp;          
-     R11_1_D   	<= R11_1_D_tmp;  
-	 R12_1_D   	<= R12_1_D_tmp;
+    R0_1_D    	<= R0_1_D_tmp ;          
+    R1_1_D    	<= R1_1_D_tmp ;          
+    R2_1_D    	<= R2_1_D_tmp ;          
+    R3_1_D    	<= R3_1_D_tmp ;          
+    R4_1_D    	<= R4_1_D_tmp ;          
+    R8_1_D    	<= R8_1_D_tmp ;          
+    R9_1_D    	<= R9_1_D_tmp ;          
+    R10_1_D   	<= R10_1_D_tmp;          
+    R11_1_D   	<= R11_1_D_tmp;  
+	  R12_1_D   	<= R12_1_D_tmp;
    end                           
  end
  
  MulMod128 MulMod7(        
                 .S_out  (R5_1_D              ), 
                 .A_in   (BU_S1_1_R1_out_wire ),       
-                .B_in   (`W_2_16              ),        
+                .B_in   (`IW_2_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -616,7 +616,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod8(                          
                 .S_out  (R6_1_D              ), 
                 .A_in   (BU_S1_2_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -625,7 +625,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod9(          
                 .S_out  (R7_1_D              ), 
                 .A_in   (BU_S1_3_R1_out_wire ),       
-                .B_in   (`W_6_16              ),        
+                .B_in   (`IW_6_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -634,7 +634,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod10( 
                 .S_out  (R13_1_D              ), 
                 .A_in   (BU_S1_5_R1_out_wire ),       
-                .B_in   (`W_2_16              ),        
+                .B_in   (`IW_2_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -643,7 +643,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod11(         
                 .S_out  (R14_1_D              ), 
                 .A_in   (BU_S1_6_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -652,7 +652,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod12(              
                 .S_out  (R15_1_D              ), 
                 .A_in   (BU_S1_7_R1_out_wire ),       
-                .B_in   (`W_6_16              ),        
+                .B_in   (`IW_6_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )    
@@ -717,77 +717,77 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
 
  always@(posedge clk)begin       
    if(~rst_n)begin               
-     R0_2  		<= P_ZERO;          
-     R1_2  		<= P_ZERO;          
-     R2_2  		<= P_ZERO;          
-     R4_2  		<= P_ZERO;          
-     R5_2  		<= P_ZERO;          
-     R6_2   	<= P_ZERO;          
-     R8_2   	<= P_ZERO;          
-     R9_2   	<= P_ZERO;          
-     R10_2  	<= P_ZERO;  
-	 R12_2  	<= P_ZERO;
-	 R13_2  	<= P_ZERO;  
-	 R14_2  	<= P_ZERO;	 
-     R0_2_D  	<= P_ZERO;          
-     R1_2_D  	<= P_ZERO;          
-     R2_2_D  	<= P_ZERO;          
-     R4_2_D  	<= P_ZERO;          
-     R5_2_D  	<= P_ZERO;          
-     R6_2_D  	<= P_ZERO;          
-     R8_2_D  	<= P_ZERO;          
-     R9_2_D  	<= P_ZERO;          
-     R10_2_D 	<= P_ZERO;      
-	 R12_2_D 	<= P_ZERO;
-	 R13_2_D 	<= P_ZERO;      
-	 R14_2_D 	<= P_ZERO;
+    R0_2  		<= P_ZERO;          
+    R1_2  		<= P_ZERO;          
+    R2_2  		<= P_ZERO;          
+    R4_2  		<= P_ZERO;          
+    R5_2  		<= P_ZERO;          
+    R6_2   	<= P_ZERO;          
+    R8_2   	<= P_ZERO;          
+    R9_2   	<= P_ZERO;          
+    R10_2  	<= P_ZERO;  
+	  R12_2  	<= P_ZERO;
+	  R13_2  	<= P_ZERO;  
+	  R14_2  	<= P_ZERO;	 
+    R0_2_D  	<= P_ZERO;          
+    R1_2_D  	<= P_ZERO;          
+    R2_2_D  	<= P_ZERO;          
+    R4_2_D  	<= P_ZERO;          
+    R5_2_D  	<= P_ZERO;          
+    R6_2_D  	<= P_ZERO;          
+    R8_2_D  	<= P_ZERO;          
+    R9_2_D  	<= P_ZERO;          
+    R10_2_D 	<= P_ZERO;      
+	  R12_2_D 	<= P_ZERO;
+	  R13_2_D 	<= P_ZERO;      
+	  R14_2_D 	<= P_ZERO;
    end                           
    else begin                    
-     R0_2  		<= BU_S2_0_R0_out_wire;           
-     R1_2  		<= BU_S2_1_R0_out_wire;           
-     R2_2  		<= BU_S2_0_R1_out_wire;           
-     R4_2  		<= BU_S2_2_R0_out_wire;           
-     R5_2  		<= BU_S2_3_R0_out_wire;           
-     R6_2   	<= BU_S2_2_R1_out_wire;           
-     R8_2   	<= BU_S2_4_R0_out_wire;           
-     R9_2   	<= BU_S2_5_R0_out_wire;           
-     R10_2  	<= BU_S2_4_R1_out_wire; 
-	 R12_2  	<= BU_S2_6_R0_out_wire;
-	 R13_2  	<= BU_S2_7_R0_out_wire; 
-	 R14_2  	<= BU_S2_6_R1_out_wire;
+    R0_2  		<= BU_S2_0_R0_out_wire;           
+    R1_2  		<= BU_S2_1_R0_out_wire;           
+    R2_2  		<= BU_S2_0_R1_out_wire;           
+    R4_2  		<= BU_S2_2_R0_out_wire;           
+    R5_2  		<= BU_S2_3_R0_out_wire;           
+    R6_2   	<= BU_S2_2_R1_out_wire;           
+    R8_2   	<= BU_S2_4_R0_out_wire;           
+    R9_2   	<= BU_S2_5_R0_out_wire;           
+    R10_2  	<= BU_S2_4_R1_out_wire; 
+	  R12_2  	<= BU_S2_6_R0_out_wire;
+	  R13_2  	<= BU_S2_7_R0_out_wire; 
+	  R14_2  	<= BU_S2_6_R1_out_wire;
      
-     R0_2_D_tmp   	<= R0_2 ;          
-     R1_2_D_tmp   	<= R1_2 ;          
-     R2_2_D_tmp   	<= R2_2 ;
-     R4_2_D_tmp   	<= R4_2 ;          
-     R5_2_D_tmp   	<= R5_2 ;          
-     R6_2_D_tmp   	<= R6_2 ;
-     R8_2_D_tmp   	<= R8_2 ;          
-     R9_2_D_tmp   	<= R9_2 ;          
-     R10_2_D_tmp  	<= R10_2;
-     R12_2_D_tmp 	<= R12_2;
-	 R13_2_D_tmp 	<= R13_2;  
-	 R14_2_D_tmp 	<= R14_2;
+    R0_2_D_tmp   	<= R0_2 ;          
+    R1_2_D_tmp   	<= R1_2 ;          
+    R2_2_D_tmp   	<= R2_2 ;
+    R4_2_D_tmp   	<= R4_2 ;          
+    R5_2_D_tmp   	<= R5_2 ;          
+    R6_2_D_tmp   	<= R6_2 ;
+    R8_2_D_tmp   	<= R8_2 ;          
+    R9_2_D_tmp   	<= R9_2 ;          
+    R10_2_D_tmp  	<= R10_2;
+    R12_2_D_tmp 	<= R12_2;
+	  R13_2_D_tmp 	<= R13_2;  
+	  R14_2_D_tmp 	<= R14_2;
 
-     R0_2_D   	<= R0_2_D_tmp ;          
-     R1_2_D   	<= R1_2_D_tmp ;          
-     R2_2_D   	<= R2_2_D_tmp ;          
-     R4_2_D   	<= R4_2_D_tmp ;          
-     R5_2_D   	<= R5_2_D_tmp ;          
-     R6_2_D   	<= R6_2_D_tmp ; 
-     R8_2_D   	<= R8_2_D_tmp ;          
-     R9_2_D   	<= R9_2_D_tmp ;          
-     R10_2_D  	<= R10_2_D_tmp;  
-	 R12_2_D  	<= R12_2_D_tmp;
-	 R13_2_D  	<= R13_2_D_tmp;  
-	 R14_2_D  	<= R14_2_D_tmp;
+    R0_2_D   	<= R0_2_D_tmp ;          
+    R1_2_D   	<= R1_2_D_tmp ;          
+    R2_2_D   	<= R2_2_D_tmp ;          
+    R4_2_D   	<= R4_2_D_tmp ;          
+    R5_2_D   	<= R5_2_D_tmp ;          
+    R6_2_D   	<= R6_2_D_tmp ; 
+    R8_2_D   	<= R8_2_D_tmp ;          
+    R9_2_D   	<= R9_2_D_tmp ;          
+    R10_2_D  	<= R10_2_D_tmp;  
+	  R12_2_D  	<= R12_2_D_tmp;
+	  R13_2_D  	<= R13_2_D_tmp;  
+	  R14_2_D  	<= R14_2_D_tmp;
    end                           
  end
  
  MulMod128 MulMod13(    
                 .S_out  (R3_2_D              ), 
                 .A_in   (BU_S2_1_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )   
@@ -796,7 +796,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod14(         
                 .S_out  (R7_2_D              ), 
                 .A_in   (BU_S2_3_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )   
@@ -805,7 +805,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod15(             
                 .S_out  (R11_2_D              ), 
                 .A_in   (BU_S2_5_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )   
@@ -814,7 +814,7 @@ BU BU_S0_7(.R0_out(BU_S0_7_R0_out_wire),
  MulMod128 MulMod16(          
                 .S_out  (R15_2_D              ), 
                 .A_in   (BU_S2_7_R1_out_wire ),       
-                .B_in   (`W_4_16              ),        
+                .B_in   (`IW_4_16              ),        
                 .N_in   (N_in                ),         
                 .rst_n  (rst_n               ),            
                 .clk    (clk                 )   

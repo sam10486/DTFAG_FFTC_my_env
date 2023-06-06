@@ -187,7 +187,7 @@ parameter S3      = 3'd3;
 
   //-------------DTFAG parameter-------------------------
   reg [1:0] FFT_stage_tmp;
-  reg [1:0] FFT_stage_pip [0:48];
+  reg [1:0] FFT_stage_pip [0:47];
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       FFT_stage_tmp <= 2'd0;
@@ -217,16 +217,16 @@ parameter S3      = 3'd3;
   always @(posedge clk or negedge rst_n) begin: delay_48
     integer i;
     if (~rst_n) begin
-      for (i = 0; i<48 ; i=i+1) begin
+      for (i = 0; i<47 ; i=i+1) begin
         FFT_stage_pip[i+1] <= 2'd0;
       end
     end else begin
-      for (i = 0; i<48; i=i+1) begin
+      for (i = 0; i<47; i=i+1) begin
         FFT_stage_pip[i+1] <= FFT_stage_pip[i];
       end
     end
   end
-  assign FFT_stage = FFT_stage_pip[48];
+  assign FFT_stage = FFT_stage_pip[47];
 
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
