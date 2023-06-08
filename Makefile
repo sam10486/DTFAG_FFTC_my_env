@@ -26,7 +26,7 @@ top_tb: | $(bld_dir)  SRAM
 	+incdir+$(root_dir)/$(src_dir)+$(root_dir)/$(src_dir)/DTFAG+$(root_dir)/$(inc_dir)+$(root_dir)/$(mem_dir) \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
-	+access+r -loadpli1 debpli:novas_pli_boot \
+	+access+r -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_v	
 
 # Post-Synthesis simulation
@@ -40,7 +40,7 @@ SYN: | $(bld_dir)
 	+define+SYN \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
-	+access+r -mccodegen -loadpli1 debpli:novas_pli_boot \
+	+access+r -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_syn
 
 

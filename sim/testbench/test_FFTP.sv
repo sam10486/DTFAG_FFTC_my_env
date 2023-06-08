@@ -9,10 +9,10 @@
 `endif   	
 
                                                                                                                           
-                                                                                                        
+`define CYCLE  5 ;                                                                                                        
                                                                                                                               
 module test_FFTP ;                                                                                                           
-	parameter CYCLE = 5 ;                                                                                                       
+	                                                                                                      
 	parameter P_WIDTH   = 64 ;  
 	parameter test_data_index_over = 4096;
 	parameter CP_WIDTH  = 22;  // original prime or small prime		2020/04/09	                                                
@@ -264,7 +264,7 @@ module test_FFTP ;
  				) ;                                                                                                             
                                                                                                                               
                                                                                                                               
- 	always #(0.5*CYCLE) clk = ~clk ;                                                                                            
+ 	always #(0.5*`CYCLE) clk = ~clk ;                                                                                            
                                                                                                                               
     `ifdef SYN
         initial $sdf_annotate("FFTP_syn.sdf", u_FFTP);
@@ -274,7 +274,7 @@ module test_FFTP ;
  	initial begin                                                                                                               
  		//$fsdbDumpfile("FFTP.fsdb"); 
  		//$fsdbDumpvars ;          
-		//$fsdbDumpvars("+struct", "+mda", u_FFTP);        
+		//$fsdbDumpvars("+struct", "+mda", u_FFTP);  
  	end                                                                                                                         
                                                                                                                               
  	initial begin                                                                                                               
@@ -300,23 +300,23 @@ module test_FFTP ;
  		ExtB1_D6_in = 0 ;                                                                                                       
  		ExtB1_D7_in = 0 ;                                                                                                       
  		//                                                                                                                      
- 		#(CYCLE)                                                                                                                
+ 		#(`CYCLE)                                                                                                                
  		rst_n = 0 ;                                                                                                             
  		                                                                                                                        
- 		#(3.1*CYCLE)                                                                                                            
+ 		#(3.1*`CYCLE)                                                                                                            
  		rst_n = 1 ;                                                                                                             
  		                                                                                                                        
- 		#(2*CYCLE)                                                                                                              
+ 		#(2*`CYCLE)                                                                                                              
  		ExtValid_in = 1 ;                                                                                                       
  		                                                                                                                        
- 		#(0.1*CYCLE)                                                                                                            
+ 		#(0.1*`CYCLE)                                                                                                            
  		// Load parameters                                                                                                      
  		                                                                                                                        
  		///*                                                                                                                    
  		//---test Mul all 1-----------------------                                                                              
  		// address=0~31                                                                                                         
  		for(j=0;j<ADDR_VALUE;j=j+1) begin                                                                                       
- 			#(CYCLE)                                                                                                            
+ 			#(`CYCLE)                                                                                                            
  		                                                                                                                        
  			ExtB0_D0_in  = Ext_B0R0_mem[j] ;                                                                                       
           	ExtB0_D1_in  = Ext_B0R1_mem[j] ;                                                                                       
@@ -353,7 +353,7 @@ module test_FFTP ;
  			ExtB1_D14_in  = Ext_B1R14_mem[j] ;                                                                                               
  			ExtB1_D15_in  = Ext_B1R15_mem[j] ; 	                                                                                           
  		end		                                                                                                                                                                                                                                
- 		#(CYCLE)                                                                                                                
+ 		#(`CYCLE)                                                                                                                
  		ExtValid_in = 0 ;                                                                                                       
  		error = 0;                                                                                                    
  	end                                                                                                                         
@@ -461,11 +461,11 @@ module test_FFTP ;
  					$display("MulD15_out[%d] = %d, Mul_Result_Golden[%d] = %d", 16*i+15,MulD15_out,16*i+15,golden_mem[16*i + 15]) ; 
  					//$stop ;                                                                                                       
  				end  
-				#(CYCLE) ;                                                                                                                      
+				#(`CYCLE) ;                                                                                                                      
  			end    
 			$display("  ==== VERFICATION OF MULTIPLCIATION IS COMPLETED  ==== ") ;  
  			$display("Total error = %d",error) ;
-			#(10*CYCLE)   		                                                                                                    
+			#(10*`CYCLE)   		                                                                                                    
  			$finish ; 
 		end
 	end                                                                                                                            
