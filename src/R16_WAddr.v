@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                       
+`include "define.v"                       
  module R16_WAddr(BND_out,                  
  			     WMA_out,                  
                   BN_in,                    

@@ -1,11 +1,11 @@
- 
-`ifdef SYN                                                              
+`include "define.v"
+`ifdef SYN     
+`include "FFTP_syn.v"                                                         
 `include "SRAM_SP_2048_128.v" 
-`timescale 1 ns/10 ps       
+`include "/opt/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Verilog/tsmc090.v"   
 `else
 `include "SRAM_SP_2048_128_rtl.v"    
 `include "FFTP.v"
-`timescale 1 ns/10 ps 
 `endif   	
 
                                                                                                                           
@@ -266,12 +266,15 @@ module test_FFTP ;
                                                                                                                               
  	always #(0.5*CYCLE) clk = ~clk ;                                                                                            
                                                                                                                               
-                                                                                                                              
-     //FSDB                                                                                                                   
+    `ifdef SYN
+        initial $sdf_annotate("FFTP_syn.sdf", u_FFTP);
+    `endif 
+
+    //FSDB                                                                                                                   
  	initial begin                                                                                                               
- 		$fsdbDumpfile("FFTP.fsdb"); 
- 		$fsdbDumpvars ;          
-		$fsdbDumpvars("+struct", "+mda", u_FFTP);        
+ 		//$fsdbDumpfile("FFTP.fsdb"); 
+ 		//$fsdbDumpvars ;          
+		//$fsdbDumpvars("+struct", "+mda", u_FFTP);        
  	end                                                                                                                         
                                                                                                                               
  	initial begin                                                                                                               

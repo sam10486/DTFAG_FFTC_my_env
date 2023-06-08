@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                                                     
+`include "define.v"                                                                   
  module CLA64clg_co(c_out,                                                                
                  // g_out,                                                             
                  // p_out,                                                               

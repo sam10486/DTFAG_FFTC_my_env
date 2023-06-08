@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                                                         
+`include "define.v"                                                                        
  module R16_DC(RDC_out0,                                                                      
  			  RDC_out1,                                                                      
  			  RDC_out2,                                                                      

@@ -1,0 +1,8 @@
+#SRAM setting
+sram_path := /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Memory/sram_sp_adv/bin/sram_sp_adv
+Freq      := 200
+MUX       := 8
+double_bit_size := 128
+sram_word_size := 2048
+instname        := SRAM_SP_$(sram_word_size)_$(double_bit_size)
+#

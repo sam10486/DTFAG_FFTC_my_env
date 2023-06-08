@@ -5,6 +5,9 @@ inc_dir := ./include
 sim_dir := ./sim
 bld_dir := ./build
 mem_dir := ./mem
+
+include mkflags
+
 CYCLE=`grep -v '^$$' $(root_dir)/sim/CYCLE`
 MAX=`grep -v '^$$' $(root_dir)/sim/MAX`
 
@@ -17,7 +20,7 @@ $(syn_dir):
 # RTL simulation
 rtl_all: clean 
 
-top_tb: | $(bld_dir)
+top_tb: | $(bld_dir)  SRAM
 	cd $(bld_dir); \
 	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
 	+incdir+$(root_dir)/$(src_dir)+$(root_dir)/$(src_dir)/DTFAG+$(root_dir)/$(inc_dir)+$(root_dir)/$(mem_dir) \
@@ -26,20 +29,18 @@ top_tb: | $(bld_dir)
 	+access+r -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_v	
 
-
-
 # Post-Synthesis simulation
 syn_all: clean syn0 syn1 syn2 syn3
 
 SYN: | $(bld_dir)
 	cd $(bld_dir); \
 	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
-	-sdf_file $(root_dir)/$(syn_dir)/test_FFTP_syn.sdf \
+	-sdf_file $(root_dir)/$(syn_dir)/FFTP_syn.sdf \
 	+incdir+$(root_dir)/$(syn_dir)+$(root_dir)/$(inc_dir)+$(root_dir)/$(sim_dir)+$(root_dir)/$(mem_dir) \
 	+define+SYN \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
-	+access+r -loadpli1 debpli:novas_pli_boot \
+	+access+r -mccodegen -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_syn
 
 
@@ -62,6 +63,24 @@ synthesize: | $(bld_dir) $(syn_dir)
 	cd $(bld_dir); \
 	dc_shell -no_home_init -f ../script/synthesis.tcl
 
+# SRAM generate
+SRAM:
+	cd $(mem_dir);\
+	$(sram_path) verilog -mux $(MUX) \
+	-bits $(double_bit_size) -instname $(instname)  -frequency $(Freq) -words $(sram_word_size);
+
+SRAM_syn:
+	cd $(mem_dir);\
+	$(sram_path) synopsys -mux $(MUX) \
+	-bits $(double_bit_size) -instname $(instname) -libname $(instname) -frequency $(Freq) -words $(sram_word_size);\
+	rm -rf *_ff_*.lib; \
+	rm -rf *_ss_*.lib;
+
+LIB_TO_DB: SRAM_syn
+	cd $(mem_dir);\
+	lc_shell -f lc_script.tcl;\
+	rm -rf *.txt;\
+	rm -rf *.log;
 
 .PHONY: clean
 

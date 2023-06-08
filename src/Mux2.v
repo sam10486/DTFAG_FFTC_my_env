@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                                                                   
+`include "define.v"                                                                                 
 module Mux2(RA0_out,                                                                                   
 			  RA1_out,                                                                                   
 			  RA2_out,                                                                                   

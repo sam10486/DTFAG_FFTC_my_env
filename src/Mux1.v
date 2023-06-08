@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                                                               
+`include "define.v"                                                                             
 module Mux1(BN0_MEM0_Dout,                                                                         
 			  BN0_MEM1_Dout,                                                                           
 			  BN0_MEM2_Dout,                                                                           

@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                     
+`include "define.v"                                   
 module R16_PipeReg4(A0_out,                              
 					  Ac_out,                              
 					  Ninv2_D2_out,                        

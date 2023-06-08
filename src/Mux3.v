@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                                                       
+`include "define.v"                                                                       
 module Mux3(MulB0_out,                                                                     
 			  MulB1_out,                                                                     
 			  MulB2_out,                                                                     

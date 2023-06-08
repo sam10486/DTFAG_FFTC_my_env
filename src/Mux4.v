@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                         
+`include "define.v"                                       
 module Mux4(  Result0_out,                                       
 			  Result1_out,                                         
 			  Result2_out,                                         

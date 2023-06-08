@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                             
+`include "define.v"                         
  module ModMux(S_out,                             
                A_in,                              
  		      B_in,                                 

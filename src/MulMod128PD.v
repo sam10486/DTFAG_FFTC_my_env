@@ -1,4 +1,4 @@
-`timescale 1 ns/1 ps                                           
+`include "define.v"                                      
 module MulMod128PD(Ninv2_out,                                  
 			       t1FD_wire,                                   
 				   t1D_wire,                                    

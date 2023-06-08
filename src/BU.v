@@ -1,4 +1,4 @@
- `timescale 1ns/1ps                                                 
+`include "define.v"                                            
  module BU(R0_out, //add                                            
            R1_out, //sub                                            
            R0_in,                                                   

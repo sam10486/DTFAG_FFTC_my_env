@@ -1,7 +1,7 @@
 `ifndef DEFINE_SVH
 `define DEFINE_SVH
 
-`timescale 10ns / 1ps
+`timescale 1ns / 1ps
 `define D_width 64
 `define doulbe_D_width 128
 `define radix_r 16

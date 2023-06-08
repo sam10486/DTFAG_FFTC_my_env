@@ -1,4 +1,4 @@
-`timescale 1ns/1ps         
+`include "define.v"       
 module Pipe(R0_out,        
              R1_out,       
              R2_out,       

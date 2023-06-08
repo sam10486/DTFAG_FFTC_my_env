@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                
+`include "define.v"                               
  module R16_AGU(BN_out,                              
                 MA,                                  
                 ROMA,                                

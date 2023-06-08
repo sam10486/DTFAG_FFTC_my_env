@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                
+`include "define.v"                           
  module CenCtrl(MulValid_out,                        
                 cen_out,                               
                 wen0_out,                              

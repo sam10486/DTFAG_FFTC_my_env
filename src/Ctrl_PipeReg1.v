@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                                             
+`include "define.v"                                                         
  module Ctrl_PipeReg1(                                           
  				        Mul_sel_Dout,                                               
  				        RDC_sel_Dout,                                               

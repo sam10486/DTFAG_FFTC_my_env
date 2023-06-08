@@ -1,4 +1,4 @@
- `timescale 1 ns/1 ps                                        
+`include "define.v"                                       
  module R16_WD_buf(RDC0_D_out,                               
  			       RDC1_D_out,                              
  				   RDC2_D_out,                              

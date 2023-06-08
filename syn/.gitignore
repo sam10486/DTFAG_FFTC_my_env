@@ -1,4 +1,8 @@
 *.sdf
 *.v
+*.ddc
+*.sdc
+*.spef
+*.rpt
 
 !.gitignore

@@ -36,7 +36,7 @@
 `include "R16_WD_delay.v"
 `include "DTFAG_Mux3.v"
 `include "Register_file.v"
-
+`include "define.v"
 
  module FFTP(MulValid_out,                                                  
              MulD0_out,                                                     
