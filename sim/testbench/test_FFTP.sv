@@ -271,10 +271,12 @@ module test_FFTP ;
     `endif 
 
     //FSDB                                                                                                                   
- 	initial begin                                                                                                               
+ 	initial begin     
+		`ifndef SYN                                                                                                          
  		//$fsdbDumpfile("FFTP.fsdb"); 
  		//$fsdbDumpvars ;          
 		//$fsdbDumpvars("+struct", "+mda", u_FFTP);  
+		`endif
  	end                                                                                                                         
                                                                                                                               
  	initial begin                                                                                                               

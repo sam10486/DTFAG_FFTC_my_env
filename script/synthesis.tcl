@@ -25,7 +25,7 @@ ort_nets -all -buffer_constant} {Change Naming Rule} {change_names -rule verilog
 set hdlin_while_loop_iterations 2000
         
 read_file -autoread -top FFTP {../src ../src/DTFAG ../include}	
-elaborate FFTP -architecture verilog 
+#elaborate FFTP -architecture verilog 
 
 current_design FFTP                                 
 link                                                
@@ -37,7 +37,7 @@ set_wire_load_mode segmented
 set_wire_load_model -name tsmc090_wl10 -library typical                            
 #set_wire_load_model -name tsmc090_wl10 -library slow                                           
 #create_clock -period 16 -waveform {0 2.5} [get_ports clk]
-create_clock -period 5 -waveform {0 2.5} [get_ports clk]
+create_clock -period 5.0 -waveform {0 2.5} [get_ports clk]
 set_dont_touch_network [get_ports clk]                                                          
 set_ideal_network [get_ports clk]                                                             
 set_ideal_network [get_ports rst_n]                                                             
@@ -51,7 +51,7 @@ set_load [load_of typical/DFFX2/D] [all_outputs]
 set_input_delay 0.2 -clock clk [remove_from_collection [all_inputs] [get_ports {clk}]]          
 set_output_delay 0.2 -max -clock clk [all_outputs]                                              
 set_fix_multiple_port_nets -all -buffer_constants     
-set_host_options -max_cores 8                                              
+set_host_options -max_cores 4                                              
 #set_case_analysis 1 [get_ports rst]                                                          
 #set_max_area 0                                                                                 
                                                                                                 
