@@ -1,6 +1,6 @@
 #SRAM setting
-sram_path := /opt/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Memory/sram_sp_adv/bin/sram_sp_adv
-sram_40nm_path := /opt/synopsys/CBDK_TSMC40_Arm_f2.0/CIC/Memory/sram_sp_hsc_rvt_hvt_rvt/r10p2/bin/sram_sp_hsc_rvt_hvt_rvt
+sram_90_path := /opt/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Memory/sram_sp_adv/bin/sram_sp_adv
+sram_40_path := /opt/synopsys/CBDK_TSMC40_Arm_f2.0/CIC/Memory/sram_sp_hsc_rvt_hvt_rvt/r10p2/bin/sram_sp_hsc_rvt_hvt_rvt
 
 Freq      := 200
 MUX       := 8

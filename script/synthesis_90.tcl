@@ -1,4 +1,4 @@
-set search_path      ". /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db ../mem $search_path"
+set search_path      ". /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db ../mem/sram_90 $search_path"
 set target_library   "typical.db SRAM_SP_2048_128.db"
 set link_library     "* $target_library dw_foundation.sldb"
 set symbol_library   "tsmc090.sdb generic.sdb"
@@ -76,7 +76,7 @@ compile_ultra -no_autoungroup -area_high_effort_script
 #compile_ultra -inc -retime 
 #optimize_netlist -area 
                                                             
-check_design > ../syn/design_check.rpt                                 
+check_design > ../syn/syn_90/design_check.rpt                                 
 remove_unconnected_ports -blast_buses [get_cells * -hier]                             
 change_names -rule verilog -hierarchy         
 
@@ -89,16 +89,16 @@ change_names -rule verilog -hierarchy
 	#define_name_rules name_rule -map {{"\*cell\*" "cell"}}
 	#define_name_rules name_rule -case_insensitive                                                  
 	#change_names -hierarchy -rule name_rule                                                        
-write_file -format verilog -hier -output ../syn/FFTP_syn.v
-write_sdf -version 2.1 -context verilog ../syn/FFTP_syn.sdf                                                                                                                                                                                                                                  
-write -format ddc -hierarchy -output ../syn/FFTP.ddc  
-write_sdc -version 1.7 ../syn/FFTP.sdc                                            
-write_parasitics -output ../syn/FFTP.spef  
+write_file -format verilog -hier -output ../syn/syn_90/FFTP_syn.v
+write_sdf -version 2.1 -context verilog ../syn/syn_90/FFTP_syn.sdf                                                                                                                                                                                                                                  
+write -format ddc -hierarchy -output ../syn/syn_90/FFTP.ddc  
+write_sdc -version 1.7 ../syn/syn_90/FFTP.sdc                                            
+write_parasitics -output ../syn/syn_90/FFTP.spef  
                                                                                                  
-report_timing -max_paths 20  > ../syn/timing.log                                  
-report_area > ../syn/area.log                                                     
-report_power > ../syn/power.log                                                   
-report_area -hier > ../syn/area_hier.log      
+report_timing -max_paths 20  > ../syn/syn_90/timing.log                                  
+report_area > ../syn/syn_90/area.log                                                     
+report_power > ../syn/syn_90/power.log                                                   
+report_area -hier > ../syn/syn_90/area_hier.log      
 
 exit
                                                                                            
