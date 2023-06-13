@@ -1,11 +1,25 @@
 `include "define.v"
-`ifdef SYN     
-`include "FFTP_syn.v"                                                         
-`include "SRAM_SP_2048_128.v" 
-`include "/opt/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Verilog/tsmc090.v"   
-`else
-`include "SRAM_SP_2048_128_rtl.v"    
-`include "FFTP.v"
+`ifdef SYN
+	`ifdef SYN_90
+		`include "FFTP_syn.v"                                                         
+		`include "SRAM_SP_2048_128.v" 
+		`include "/opt/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Verilog/tsmc090.v"   
+	`endif
+	`ifdef SYN_40
+		`include "FFTP_syn.v"                                                         
+		`include "SRAM_SP_40nm.v" 
+		`include "/opt/synopsys/CBDK_TSMC40_Arm_f2.0/CIC/Verilog/sc9_cln40g_base_lvt_neg.v" 
+		`include "/opt/synopsys/CBDK_TSMC40_Arm_f2.0/CIC/Verilog/sc9_cln40g_base_lvt_udp.v" 
+	`endif
+`else 
+	`ifdef SRAM_90
+		`include "SRAM_SP_2048_128_rtl.v"    
+		`include "FFTP.v"
+	`endif
+	`ifdef SRAM_40
+		`include "SRAM_SP_40nm_rtl.v"    
+		`include "FFTP.v"
+	`endif
 `endif   	
 
                                                                                                                           

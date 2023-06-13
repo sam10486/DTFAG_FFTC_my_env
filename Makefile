@@ -1,9 +1,12 @@
 root_dir := $(PWD)
-src_dir := ./src
 inc_dir := ./include
 sim_dir := ./sim
 bld_dir := ./build
 
+src_90_dir := ./src_90
+src_40_dir := ./src_40
+
+mem_40_dir := ./mem/sram_40
 mem_90_dir := ./mem/sram_90
 
 syn_90_dir := ./syn/syn_90
@@ -20,6 +23,8 @@ $(bld_dir):
 $(syn_90_dir):
 	mkdir -p $(syn_90_dir); 
 
+$(syn_40_dir):
+	mkdir -p $(syn_40_dir); 
 
 # RTL simulation
 rtl_all: clean 
@@ -27,7 +32,18 @@ rtl_all: clean
 top_tb_90: | $(bld_dir) 
 	cd $(bld_dir); \
 	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
-	+incdir+$(root_dir)/$(src_dir)+$(root_dir)/$(src_dir)/DTFAG+$(root_dir)/$(inc_dir)+$(root_dir)/$(mem_90_dir) \
+	+incdir+$(root_dir)/$(src_90_dir)+$(root_dir)/$(src_90_dir)/DTFAG+$(root_dir)/$(inc_dir)+$(root_dir)/$(mem_90_dir) \
+	+define+SRAM_90 \
+	-define CYCLE=$(CYCLE) \
+	-define MAX=$(MAX) \
+	+access+r -mccodegen -mcmaxcores 4 -mcdump -loadpli1 debpli:novas_pli_boot \
+	+output_path=$(root_dir)/test_result_v	
+
+top_tb_40: | $(bld_dir) 
+	cd $(bld_dir); \
+	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
+	+incdir+$(root_dir)/$(src_40_dir)+$(root_dir)/$(src_40_dir)/DTFAG+$(root_dir)/$(inc_dir)+$(root_dir)/$(mem_40_dir) \
+	+define+SRAM_40 \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
 	+access+r -mccodegen -mcmaxcores 4 -mcdump -loadpli1 debpli:novas_pli_boot \
@@ -41,12 +57,22 @@ SYN_90: | $(bld_dir)
 	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
 	-sdf_file $(root_dir)/$(syn_90_dir)/FFTP_syn.sdf \
 	+incdir+$(root_dir)/$(syn_90_dir)+$(root_dir)/$(inc_dir)+$(root_dir)/$(sim_dir)+$(root_dir)/$(mem_90_dir) \
-	+define+SYN \
+	+define+SYN+SYN_90 \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
 	+access+r -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_syn
 
+SYN_40: | $(bld_dir)
+	cd $(bld_dir); \
+	irun $(root_dir)/$(sim_dir)/testbench/test_FFTP.sv \
+	-sdf_file $(root_dir)/$(syn_40_dir)/FFTP_syn.sdf \
+	+incdir+$(root_dir)/$(syn_40_dir)+$(root_dir)/$(inc_dir)+$(root_dir)/$(sim_dir)+$(root_dir)/$(mem_40_dir) \
+	+define+SYN+SYN_40 \
+	-define CYCLE=$(CYCLE) \
+	-define MAX=$(MAX) \
+	+access+r +notimingcheck -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
+	+output_path=$(root_dir)/test_result_syn
 
 # Utilities
 nWave: | $(bld_dir)
@@ -67,7 +93,13 @@ synthesize_90: | $(bld_dir) $(syn_90_dir)
 	cd $(bld_dir); \
 	dc_shell -no_home_init -f ../script/synthesis_90.tcl
 
+synthesize_40: | $(bld_dir) $(syn_40_dir)
+#	cp script/synopsys_dc.setup $(bld_dir)/.synopsys_dc.setup; 
+	cd $(bld_dir); \
+	dc_shell -no_home_init -f ../script/synthesis_40.tcl
+
 # SRAM generate
+# 90nm
 SRAM_90:
 	cd $(mem_90_dir);\
 	$(sram_90_path) verilog -mux $(MUX) \
@@ -85,6 +117,25 @@ LIB_TO_DB_90: SRAM_90_syn
 	lc_shell -f lc_script.tcl;\
 	rm -rf *.txt;\
 	rm -rf *.log;
+# 40nm
+SRAM_40:
+	cd $(mem_40_dir);\
+	$(sram_40_path) verilog -mux $(MUX_40) \
+	-bits $(double_bit_size_40) -instname $(instname_40) -frequency $(Freq_40) -words $(sram_word_size_40);
+
+SRAM_40_syn:
+	cd $(mem_40_dir);\
+	$(sram_40_path) synopsys -mux $(MUX_40) \
+	-bits $(double_bit_size_40) -instname $(instname_40) -libname $(instname_40) -frequency $(Freq_40) -words $(sram_word_size_40);\
+	rm -rf *_ff_*.lib; \
+	rm -rf *_ss_*.lib; \
+	rm -rf *_ffg_*.lib;
+
+LIB_TO_DB_40: SRAM_40_syn
+	cd $(mem_40_dir);\
+	lc_shell -f lc_script_40.tcl;\
+	rm -rf *.txt;\
+	rm -rf *.log;
 
 .PHONY: clean
 
@@ -93,10 +144,15 @@ clean:
 	rm -rf $(sim_dir)/prog*/result*.txt; \
 
 	rm -rf $(root_dir)/INCA_libs; \
-	rm -rf $(root_dir)/$(src_dir)/INCA_libs; \
-	rm -rf $(root_dir)/$(src_dir)/*.history; \
-	rm -rf $(root_dir)/$(src_dir)/*.log; \
-	rm -rf $(root_dir)/$(src_dir)/simv.daidir; \
+	rm -rf $(root_dir)/$(src_90_dir)/INCA_libs; \
+	rm -rf $(root_dir)/$(src_90_dir)/*.history; \
+	rm -rf $(root_dir)/$(src_90_dir)/*.log; \
+	rm -rf $(root_dir)/$(src_90_dir)/simv.daidir; \
+
+	rm -rf $(root_dir)/$(src_40_dir)/INCA_libs; \
+	rm -rf $(root_dir)/$(src_40_dir)/*.history; \
+	rm -rf $(root_dir)/$(src_40_dir)/*.log; \
+	rm -rf $(root_dir)/$(src_40_dir)/simv.daidir; \
 	
 	rm -rf $(root_dir)/$(sim_dir)/testbench/INCA_libs;\
 	rm -rf $(root_dir)/$(sim_dir)/testbench/*.history;\
@@ -105,6 +161,10 @@ clean:
 	rm -rf $(root_dir)/$(mem_90_dir)/*.log; \
 	rm -rf $(root_dir)/$(mem_90_dir)/*.history; \
 	rm -rf $(root_dir)/$(mem_90_dir)/INCA_libs; \
+
+	rm -rf $(root_dir)/$(mem_40_dir)/*.log; \
+	rm -rf $(root_dir)/$(mem_40_dir)/*.history; \
+	rm -rf $(root_dir)/$(mem_40_dir)/INCA_libs; \
 
 	rm -rf $(root_dir)/*.log; \
 	rm -rf $(root_dir)/*.history;\
