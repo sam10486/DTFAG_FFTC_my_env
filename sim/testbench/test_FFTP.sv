@@ -314,13 +314,15 @@ module test_FFTP ;
  		ExtB1_D4_in = 0 ;                                                                                                       
  		ExtB1_D5_in = 0 ;                                                                                                       
  		ExtB1_D6_in = 0 ;                                                                                                       
- 		ExtB1_D7_in = 0 ;                                                                                                       
- 		//                                                                                                                      
- 		#(`CYCLE)                                                                                                                
- 		rst_n = 0 ;                                                                                                             
- 		                                                                                                                        
- 		#(3.1*`CYCLE)                                                                                                            
- 		rst_n = 1 ;                                                                                                             
+ 		ExtB1_D7_in = 0 ;   
+
+		force clk = 0;
+		# 100                                                                                                                                                                                                                
+ 		rst_n = 0 ;                                                                                                                                                                                                                                  
+ 		# 100                                                                                                        
+ 		rst_n = 1 ;  
+		# 100 
+		release clk ;                                                                                                           
  		                                                                                                                        
  		#(2*`CYCLE)                                                                                                              
  		ExtValid_in = 1 ;                                                                                                       

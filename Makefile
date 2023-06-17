@@ -71,7 +71,7 @@ SYN_40: | $(bld_dir)
 	+define+SYN+SYN_40 \
 	-define CYCLE=$(CYCLE) \
 	-define MAX=$(MAX) \
-	+access+r +notimingcheck -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
+	+access+r  -mccodegen -mcmaxcores 4 -loadpli1 debpli:novas_pli_boot \
 	+output_path=$(root_dir)/test_result_syn
 
 # Utilities
